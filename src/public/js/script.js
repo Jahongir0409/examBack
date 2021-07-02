@@ -46,10 +46,7 @@ function usersRenderer(array) {
 	const navbarItems = document.querySelectorAll('.list-blogs-item')
 	navbarItems.forEach((navbarItem) => {
 		navbarItem.addEventListener('click', () => {
-			// navbarItems.forEach((navbarItem) => {
-			// 	navbarItem.classList.remove('active')
-			// })
-			// navbarItem.classList.add('active')
+
 			if (navbarItem.dataset.id) {
 				let currentUser = array.find(user => user.user_id == navbarItem.dataset.id)
 				videosRenderer(currentUser.videos, currentUser.username, currentUser.profile_link)
