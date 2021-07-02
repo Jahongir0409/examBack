@@ -5,16 +5,16 @@ const  listPages   = document.querySelector('.list-blogs')
 let user = window.localStorage.getItem('user')
 user = user ? JSON.parse(user) : {}
 
-if (user.profile_link) profileImg.src = 'images/' + user.profile_link
+if (user.profile_link) profileImg.src = 'image/' + user.profile_link
 
 function videosRenderer(array, username, profile_link) {
 	let string = ""
 	array.map(video => {
 		string += `
 		<li class="list-videos-item">
-		<video class="div-video" src=${'videos/' + video.video_link} controls></video>
+		<video class="div-video" src=${'video/' + video.video_link} controls></video>
 		<div class="wrap">
-		<img class="img-videos" src=${'images/' + video.user.profile_link} alt="blog">
+		<img class="img-videos" src=${'image/' + video.user.profile_link} alt="blog">
 		<h3 class="heading-tertiary">${video.user.username[0].toUpperCase() + video.user.username.slice(1, video.user.username.length)}</h3>
 		</div>                  
 		<div class="wrapper">
@@ -36,7 +36,7 @@ function usersRenderer(array) {
 	array.map(user => {
 		string += `
 		<li class="list-blogs-item" data-id=${user.user_id}><a href="#" class="item-link-channels">
-		<img src=${'images/' + user.profile_link} alt="channel-icon" width="30px" height="30px" class"img-following-pages">
+		<img src=${'image/' + user.profile_link} alt="channel-icon" width="30px" height="30px" class"img-following-pages">
 		<span class="title-following-pages">${user.username}</span>
 		<div class="online-follwing-icon"></div>
 		</a></li>
@@ -58,7 +58,7 @@ function usersRenderer(array) {
 	})
 }
 async function getData () {
-	let response = await request('/videos')
+	let response = await request('/video')
 	videosRenderer(response)
 }
 async function getUsers () {
